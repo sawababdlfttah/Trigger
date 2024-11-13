@@ -58,7 +58,7 @@ private class AccountBatchGeneratorTest {
         Test.startTest();
         // Get the batches using the start method
         List<Integer> batches = (List<Integer>)batchJob.start(null);
-        Test.stopTest();
+        Test.stopTest()
         
         // Verify that the batch size was limited to 10000
         System.assertEquals(10000, batchJob.batchSize, 
