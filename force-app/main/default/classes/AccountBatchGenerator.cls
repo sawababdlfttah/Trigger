@@ -23,20 +23,16 @@ global class AccountBatchGenerator implements Database.Batchable<Integer> {
         List<Account> accounts = new List<Account>();
         Integer startAccountNum = scope[0] * batchSize + 1;
 
-        // Add accounts within the allowed batch size range
         for (Integer i = 0; i < batchSize && startAccountNum + i <= totalAccounts; i++) {
             Integer accountNumber = startAccountNum + i;
             
-            // Create Account record
             accounts.add(new Account(
                 Name = 'Account ' + accountNumber,
-                Industry = 'Technology', // Example value
+                Industry = 'Technology', 
                 AnnualRevenue = 1000000 + (accountNumber * 1000) // Adjusted for variability
-                // Add other fields as needed
             ));
         }
 
-        // Insert accounts if list is not empty
         if (!accounts.isEmpty()) {
             insert accounts;
         }
